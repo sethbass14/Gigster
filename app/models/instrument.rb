@@ -1,4 +1,4 @@
 class Instrument < ApplicationRecord
-  has_many :musician_intruments
-  has_many :musicians, through: :musician_intruments
+  has_many :musician_instruments
+  has_many :musicians, :class_name => "User", through: :musician_instruments
 end
