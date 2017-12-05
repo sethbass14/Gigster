@@ -1,0 +1,14 @@
+<h1>Edit</h1>
+<%= form_for @user do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.label :age %>
+  <%= f.text_field :age %>
+  <%= f.collection_select :instrument_id, @instruments, :id, :name%>
+  <%= f.collection_select :city_id, @cites, :id, :name%>
+  <%= f.label :bio %>
+  <%= f.text_field :bio %>
+  <%= f.submit %>
+<% end %>

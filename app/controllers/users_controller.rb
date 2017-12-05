@@ -2,10 +2,12 @@ class UsersController < ApplicationRecord
 
   def new
     @user = User.new
+    @instruments = Instrument.all
+    @cities = City.all
   end
 
   def create
-    @user = User.create(user_params(:first_name, :last_name, :bio, :age))
+    @user = User.create(user_params(:first_name, :last_name, :age, :bio, instrument_ids:[], :city_id))
     redirect_to user_path(@user)
   end
 
