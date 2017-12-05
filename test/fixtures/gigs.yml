@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  date: 2017-12-05
+  start_time: 2017-12-05 11:40:00
+  city: one
+  leader: one
+
+two:
+  name: MyString
+  location: MyString
+  date: 2017-12-05
+  start_time: 2017-12-05 11:40:00
+  city: two
+  leader: two

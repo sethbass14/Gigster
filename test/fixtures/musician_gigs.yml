@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  musician: one
+  gig: one
+
+two:
+  musician: two
+  gig: two
