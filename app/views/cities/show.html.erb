@@ -1,1 +1,9 @@
 <h1><%= @city.name %></h1>
+
+<h2>Instruments</h2>
+
+<% @city.city_instrument_names.each do |instrument_name| %>
+  <ul>
+    <li><%= instrument_name %></li>
+  </ul>
+<% end %>
