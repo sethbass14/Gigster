@@ -1,8 +1,16 @@
-<%= @user.to_s %>
-<%= @user.age %>
-<%= @user.bio %>
-<%= @user.city %>
+<h1>Welcome!</h1>
 
+
+<label>Name: </label> <%= @user.to_s %>
+<br />
+<label>Age: </label><%= @user.age %>
+<br />
+<label>Bio: </label><%= @user.bio %>
+<br />
+<label>City: </label><%= @user.city.name %>
+<br />
+<br />
 <% @user.instruments.each do |instrument| %>
-  <li> <%= instrument%> </li>
-<% end %<
+  <li> <%= instrument.name%> </li>
+
+<% end %>
