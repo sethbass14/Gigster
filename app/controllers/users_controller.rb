@@ -1,4 +1,4 @@
-class UsersController < ApplicationRecord
+class UsersController < ApplicationController
 
   def new
     @user = User.new
@@ -7,7 +7,7 @@ class UsersController < ApplicationRecord
   end
 
   def create
-    @user = User.create(user_params(:first_name, :last_name, :age, :bio, instrument_ids:[], :city_id))
+    @user = User.create(user_params(:first_name, :last_name, :age, :bio, instruments_id: [], :city_id))
     redirect_to user_path(@user)
   end
 
@@ -15,9 +15,6 @@ class UsersController < ApplicationRecord
     @user = User.find(params[:id])
   end
 
-  def user_params(*args)
-    params.require(:user).permit(*args)
-  end
 
   def edit
     @user = User.find(params[:id])
@@ -27,5 +24,10 @@ class UsersController < ApplicationRecord
     @user = User.find(params[:id])
     @user.update(user_params(:first_name, :last_name, :bio, :age))
     redirect_to user_path(@user)
+  end
+
+  private
+  def user_params(*args)
+    params.require(:user).permit(*args)
   end
 end

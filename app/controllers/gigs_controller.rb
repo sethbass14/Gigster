@@ -1,2 +1,2 @@
-class GigsController < ApplicationRecord
+class GigsController < ApplicationController
 end
