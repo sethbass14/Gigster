@@ -1,0 +1,17 @@
+<h1>Gigs</h1>
+
+<% @gigs.all.each do |gig| %>
+  <label>Name:</label>
+  <%= gig.name %>
+  <ul>
+    <li>Venue:</li>
+    <li><%= gig.location %></li>
+    <br></br>
+    <li>Date:</li>
+    <li><%= gig.date.strftime("%A %B %d, %Y")%></li>
+    <br></br>
+    <li>Hit</li>
+    <li><%= gig.start_time.strftime("%l:%M") %></li>
+    <br></br>
+  </ul>
+<% end %>
