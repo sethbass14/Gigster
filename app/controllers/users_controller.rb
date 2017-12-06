@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def create
     byebug
-    @user = User.create(user_params(:first_name, :last_name, :age, :bio, :city_id, instrument_ids: []))
-    redirect_to user_path(@user)
+    # @user = User.create(user_params(:first_name, :last_name, :age, :bio, :city_id, instrument_ids: []))
+    # redirect_to user_path(@user)
   end
 
   def show

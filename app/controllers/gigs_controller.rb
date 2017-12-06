@@ -15,7 +15,11 @@ class GigsController < ApplicationController
   end
 
   def create
+    gig_date = Date.parse(params[:gig][:date])
     @gig = Gig.create(gig_params(:name, :location, :city_id, :leader_id, :start_time))
+    @gig.date = gig_date
+    @gig.save
+    byebug
     redirect_to gig_path(@gig)
   end
 
