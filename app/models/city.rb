@@ -10,23 +10,12 @@ class City < ApplicationRecord
     city_musicians_instrument.collect {|instrument| instrument.name}
   end
 
-  # Gives us an array of all the the instances of the musicians that play the instruments that are available in the city.
-  # def city_musicians_instance
-  #   musicians = self.city_musicians_instrument.collect {|instrument| instrument.musicians}.compact.flatten
-  #     musicians.select do |musician|
-  #       if musician.city_id == self.id
-  #         musician
-  #       end
-  #     end
-  # end
+  def city_musicians
 
+  end
 
+  def search_city_by_instrument(instrument)
+    self.musicians.includes(:instruments).where("instruments.name" => instrument)
+  end
 
-  # def city_musicians_name
-  #   city_musicians_instrument.each do |instrument|
-  #     instrument.musicians.each do |musician|
-  #       musician.select {|musician| musician.city == self}
-  #    end
-  #  end
-  # end
 end

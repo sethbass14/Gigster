@@ -7,3 +7,18 @@
     <li><%= instrument_name %></li>
   </ul>
 <% end %>
+<h2>Search For Musicians By Instrument</h2>
+
+<%= form_tag(city_path(@city), :method => 'get', id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+
+<% if @musicians%>
+  <% @musicians.each do |musician|%>
+  <ul>
+    <li><%= link_to musician.to_s, user_path(musician) %></li>
+  </ul>
+  <% end %>
+<% end %>

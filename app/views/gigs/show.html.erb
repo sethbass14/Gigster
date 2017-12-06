@@ -11,4 +11,6 @@
   <li>Hit</li>
   <li><%= @gig.start_time.strftime("%l:%M") %></li>
   <br></br>
+  <li>Gig Leader:</li>
+  <li><%= link_to @gig.leader.to_s, user_path(@gig.leader)%></li>
 </ul>
