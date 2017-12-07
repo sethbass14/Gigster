@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def create
     instrument_ids = params[:user][:instrument_ids]
-    @user = User.new(user_params(:first_name, :last_name, :age, :bio, :city_id))
+    @user = User.create(user_params(:first_name, :last_name, :age, :bio, :city_id))
     instrument_ids.each do |id|
       if !id.empty?
         instr = Instrument.find(id)
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       end
     end
     @user.save
+    byebug
     redirect_to user_path(@user)
   end
 
