@@ -39,7 +39,8 @@ class GigsController < ApplicationController
 
   def update
     @gig = Gig.find(params[:id])
-    @gig.update(gig_params(:name, :location, :city_id, :leader_id, :start_time, musician_ids: []))
+    @gig.update(gig_params(:name, :date, :location, :city_id, :leader_id, :start_time, musician_ids: []))
+
     @gig.save
     redirect_to gig_path(@gig)
   end

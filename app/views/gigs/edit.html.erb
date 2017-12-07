@@ -7,7 +7,7 @@
   <label>Venue</label>
   <%= f.text_field :location %>
   <br></br>
-  <label>Date (DD-MM-YYYY)</label>
+  <label>Date (YYYY-MM-DD)</label>
   <%= f.text_field :date %>
   <br></br>
   <label>Time(HH:MM) Military Time</label>
@@ -20,6 +20,7 @@
   <%= f.collection_select :city_id, @cities, :id, :name%>
   <br></br>
   <label>Remove musicians who are already on the gig</label>
+  <br></br>
   <%= f.collection_check_boxes :musician_ids, @gig.musicians, :id, :to_s%>
   <br></br>
 
@@ -27,6 +28,7 @@
     <%= f.collection_check_boxes :musician_ids, @musicians, :id, :to_s %>
   <% end %>
   <!-- <label>Select Musicans who are part of this gig!</label><br> -->
+  <br></br>
   <%= f.submit %>
  <br></br>
 <% end %>
