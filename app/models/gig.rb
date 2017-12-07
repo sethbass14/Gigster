@@ -5,4 +5,6 @@ class Gig < ApplicationRecord
   has_many :musicians, :class_name => "User", through: :musician_gigs
 
   # validates :musician_ids, uniqueness: true
+
+
 end

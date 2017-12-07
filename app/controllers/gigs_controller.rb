@@ -24,15 +24,18 @@ class GigsController < ApplicationController
 
   def edit
     @gig = Gig.find(params[:id])
-    @users = User.all
-    @cities = City.all
-    if params[:search]
-      @city = City.find(params[:id])
-      @musicians = @city.search_city_by_instrument(params[:search])
-      # byebug
-      render :edit
+    if @gig.leader_id == session[:user_id]
+      @users = User.all
+      @cities = City.all
+      if params[:search]
+        @city = City.find(@gig.city_id)
+        @musicians = @city.search_city_by_instrument(params[:search])
+        render :edit
+      end
+    else
+      flash[:message] = "You are not authorized to view this page!"
+      redirect_to user_path(session[:user_id])
     end
-
   end
 
 

@@ -1,5 +1,4 @@
-<h1>Welcome!</h1>
-
+<h1>Profile Page</h1>
 
 <label>Name: </label> <%= @user.to_s %>
 <br />
@@ -13,4 +12,22 @@
 <% @user.instruments.each do |instrument| %>
   <li> <%= instrument.name%> </li>
 
+<% end %>
+
+<h2>Upcoming Gigs</h2>
+<% @user.gigs.each do |gig|%>
+<%= gig.name %>
+<ul>
+  <li>Venue:</li>
+  <li><%= gig.location %></li>
+  <br></br>
+  <li>Date:</li>
+  <li><%= gig.date.strftime("%A %B %d, %Y")%></li>
+  <br></br>
+  <li>Hit</li>
+  <li><%= gig.start_time.strftime("%l:%M") %></li>
+  <br></br>
+  <li>Gig Leader:</li>
+  <li><%= link_to gig.leader, user_path(gig.leader)%></li>
+</ul>
 <% end %>

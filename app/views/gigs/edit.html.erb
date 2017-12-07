@@ -25,6 +25,8 @@
   <br></br>
 
   <% if @musicians %>
+    <label> Add Musicians to this gig: </label>
+    <br></br>
     <%= f.collection_check_boxes :musician_ids, @musicians, :id, :to_s %>
   <% end %>
   <!-- <label>Select Musicans who are part of this gig!</label><br> -->

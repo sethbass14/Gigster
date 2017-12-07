@@ -11,11 +11,13 @@
   <body>
     <% if logged_in? %>
       <%= link_to "Sign Out", signout_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", signin_path %>
+      <%= link_to "Gigs", gigs_path %> <%= link_to "Cities", cities_path%> <%= link_to "Profile", user_path(session[:user_id])%>
     <% end %>
 
-    <%= link_to "Gigs", gigs_path %> <%= link_to "Cities", cities_path%>
+    <% flash.each do |key, value| %>
+      <em><%= value %></em>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

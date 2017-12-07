@@ -14,6 +14,8 @@ class User < ApplicationRecord
     self.first_name + " " +self.last_name
   end
 
+
+
   # def other_instrument
   #     self.instruments
   # end
