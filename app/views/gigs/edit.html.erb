@@ -19,13 +19,18 @@
   <label>Select a city</label>
   <%= f.collection_select :city_id, @cities, :id, :name%>
   <br></br>
+  <label>Remove musicians who are already on the gig</label>
+  <%= f.collection_check_boxes :musician_ids, @gig.musicians, :id, :to_s%>
+  <br></br>
 
   <% if @musicians %>
     <%= f.collection_check_boxes :musician_ids, @musicians, :id, :to_s %>
   <% end %>
   <!-- <label>Select Musicans who are part of this gig!</label><br> -->
   <%= f.submit %>
+ <br></br>
 <% end %>
+<label>Search for musicians by instrument in <%= @gig.city.name %> and add them to this gig!</label>
 <%= form_tag(edit_gig_path(@gig), :method => 'get', id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>
     <%= submit_tag "Search" %>

@@ -13,4 +13,17 @@
   <br></br>
   <li>Gig Leader:</li>
   <li><%= link_to @gig.leader.to_s, user_path(@gig.leader)%></li>
+  <br></br>
+  <li>Musicians on this gig</li>
+  <ul>
+    <% @gig.musicians.each do |musician| %>
+    <li><%= link_to "#{musician.to_s}", user_path(musician) %></li>
+      <label><%= "#{musician.to_s}'s instruments"%></label>
+        <% musician.instruments.each do |instrument|%>
+        <ul>
+          <li><%= instrument.name %></li>
+        </ul>
+        <% end %>
+    <% end %>
+  </ul>
 </ul>
