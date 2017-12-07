@@ -48,6 +48,14 @@ class GigsController < ApplicationController
     redirect_to gig_path(@gig)
   end
 
+  def destroy
+    @gig = Gig.find(params[:id])
+    @gig.destroy
+    flash[:message] = "Gig deleted, homie. Bread out the window."
+    redirect_to user_path(current_user)
+
+  end
+
   private
 
   def gig_params(*args)

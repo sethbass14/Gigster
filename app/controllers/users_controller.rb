@@ -35,8 +35,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @instruments = Instrument.all
-    @cities = City.all
+    if @user.id == current_user
+      @instruments = Instrument.all
+      @cities = City.all
+    else
+      flash[:message] = "You are not authorized to view this page!"
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   def update

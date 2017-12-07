@@ -13,8 +13,29 @@
   <li> <%= instrument.name%> </li>
 
 <% end %>
+<%= link_to "Edit profile", edit_user_path(@user) %>
 
 <h2>Upcoming Gigs</h2>
+<br></br>
+<h3>Gigs as Leader</h3>
+<% @user.bookings.each do |gig|%>
+<%= link_to gig.name, gig_path(gig) %>
+<ul>
+  <li>Venue:</li>
+  <li><%= gig.location %></li>
+  <br></br>
+  <li>Date:</li>
+  <li><%= gig.date.strftime("%A %B %d, %Y")%></li>
+  <br></br>
+  <li>Hit</li>
+  <li><%= gig.start_time.strftime("%l:%M") %></li>
+  <br></br>
+  <li>Hired Musicians</li>
+
+<% end %>
+
+<br></br>
+<h3>Gigs as sideman/woman/all genders</h3>
 <% @user.gigs.each do |gig|%>
 <%= gig.name %>
 <ul>

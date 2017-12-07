@@ -1,23 +1,28 @@
 <h1> <%= @gig.name %> </h1>
 
-<%= @gig.name %>
 <ul>
-  <li>Venue:</li>
+  <h2><label>Venue:</label></h2>
   <li><%= @gig.location %></li>
   <br></br>
   <li>Date:</li>
   <li><%= @gig.date.strftime("%A %B %d, %Y")%></li>
   <br></br>
-  <li>Hit</li>
+
+  <h2><label>Hit:</label></h2>
   <li><%= @gig.start_time.strftime("%l:%M") %></li>
   <br></br>
-  <li>Gig Leader:</li>
+  <h2><label>Gig Leader:</label></h2>
   <li><%= link_to @gig.leader.to_s, user_path(@gig.leader)%></li>
   <% if @gig.leader_id == session[:user_id] %>
     <li><%= link_to "Edit this gig", edit_gig_path(@gig)%></li>
   <% end %>
   <br></br>
-  <li>Musicians on this gig</li>
+
+  <% if @gig.musicians.empty? %>
+  <p>You have no musicians hired! Get to work and find them!</p>
+  <p><%= link_to "Click this link to search for musicians", edit_gig_path(@gig)%></p>
+  <% else %>
+  <label>Musicians on this gig</label>
   <ul>
     <% @gig.musicians.each do |musician| %>
     <li><%= link_to "#{musician.to_s}", user_path(musician) %></li>
@@ -27,6 +32,7 @@
           <li><%= instrument.name %></li>
         </ul>
         <% end %>
+      <% end %>
     <% end %>
   </ul>
 </ul>
