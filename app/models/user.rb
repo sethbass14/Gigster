@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :city
   has_many :musician_instruments, :foreign_key => "musician_id"
   has_many :instruments, through: :musician_instruments

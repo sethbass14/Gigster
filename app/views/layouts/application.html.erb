@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <%= link_to "Sign Out", signout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", signin_path %>
+    <% end %>
+
     <%= link_to "Gigs", gigs_path %> <%= link_to "Cities", cities_path%>
     <%= yield %>
   </body>
