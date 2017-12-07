@@ -8,16 +8,23 @@ class UsersController < ApplicationController
 
   def create
     instrument_ids = params[:user][:instrument_ids]
-    @user = User.create(user_params(:first_name, :last_name, :age, :bio, :city_id))
-    instrument_ids.each do |id|
-      if !id.empty?
-        instr = Instrument.find(id)
-        @user.instruments << instr
+    @user = User.new(user_params(:first_name, :last_name, :age, :bio, :city_id))
+
+    if @user.valid?
+      @user.save
+      instrument_ids.each do |id|
+        if !id.empty?
+          instr = Instrument.find(id)
+          @user.instruments << instr
+        end
       end
+      @user.save
+      redirect_to user_path(@user)
+    else
+      @instruments = Instrument.all
+      @cities = City.all
+      render :new
     end
-    @user.save
-    byebug
-    redirect_to user_path(@user)
   end
 
   def show

@@ -13,6 +13,7 @@
   <br></br>
   <li>Gig Leader:</li>
   <li><%= link_to @gig.leader.to_s, user_path(@gig.leader)%></li>
+  <li><%= link_to "Edit this gig", edit_gig_path(@gig)%></li>
   <br></br>
   <li>Musicians on this gig</li>
   <ul>

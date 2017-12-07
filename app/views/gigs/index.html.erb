@@ -2,7 +2,7 @@
 
 <% @gigs.all.each do |gig| %>
   <label>Name:</label>
-  <%= gig.name %>
+  <%= link_to gig.name, gig_path(gig) %>
   <ul>
     <li>Venue:</li>
     <li><%= gig.location %></li>
