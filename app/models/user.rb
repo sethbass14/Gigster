@@ -14,7 +14,21 @@ class User < ApplicationRecord
     self.first_name + " " +self.last_name
   end
 
+  def leader_dates #as a leader
+    self.bookings.collect { |booking| booking.date }
+  end
 
+  def gig_dates
+    self.gigs.collect { |gig| gig.date}
+  end
+
+  def booked_dates
+    leader_dates.concat(gig_dates)
+  end
+
+  def available(date)
+    !booked_dates.include?(date)
+  end
 
   # def other_instrument
   #     self.instruments

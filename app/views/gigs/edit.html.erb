@@ -17,6 +17,8 @@
   <label>Select a city</label>
   <%= f.collection_select :city_id, @cities, :id, :name%>
   <br></br>
+
+
   <%if !@gig.musicians.empty?%>
     <label>Remove musicians who are already on the gig</label>
   <br></br>
@@ -26,16 +28,23 @@
     <p>There are no musicians yet. Search for them below!</p>
   <% end %>
 
+
     <% if @musicians %>
-      <label> Add Musicians to this gig: </label>
-      <br></br>
-      <%= f.collection_check_boxes :musician_ids, @musicians, :id, :to_s %>
-    <% end %>
-  <!-- <label>Select Musicans who are part of this gig!</label><br> -->
+      <% available = @musicians.select { |musician| musician.available(@gig.date) }%>
+      <% if available.empty? %>
+          <p>Hey, there's no <%=params[:search]%> player(s) available on this day in <%=@gig.city.name%></p>
+      <% else %>
+          <label> Add <%=params[:search]%> player(s) to this gig: </label>
+          <br></br>
+          <%= f.collection_check_boxes :musician_ids, available, :id, :to_s %>
+      <% end %>
+  <% end %>
   <br></br>
   <%= f.submit %>
  <br></br>
 <% end %>
+
+
 <label>Search for musicians by instrument in <%= @gig.city.name %> and add them to this gig!</label>
 <%= form_tag(edit_gig_path(@gig), :method => 'get', id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>
