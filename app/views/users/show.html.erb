@@ -1,16 +1,17 @@
 <h1>Profile Page</h1>
 
-<label>Name: </label> <%= @user.to_s %>
+<label>Name:</label> <%= @user.to_s %>
 <br />
-<label>Age: </label><%= @user.age %>
+<label>Age:</label> <%= @user.age %>
 <br />
-<label>Bio: </label><%= @user.bio %>
+<label>Bio:</label> <%= @user.bio %>
 <br />
-<label>City: </label><%= @user.city.name %>
+<label>City:</label> <%= @user.city.name %>
 <br />
+<label>Email:</label> <%= mail_to @user.email, @user.email, {subject: "Hey from #{@current_user.to_s}. Found you on Gigster!", body: "Tryna play?"} %>
 <br />
 <% @user.instruments.each do |instrument| %>
-  <li> <%= instrument.name%> </li>
+  <li> <%= instrument.name %> </li>
 
 <% end %>
 <%= button_to "Edit profile", edit_user_path(@user), :method => :get%>
@@ -36,9 +37,9 @@
     <% end %>
 <% end %>
 <br></br>
-<h3>Gigs as sideman/woman/all genders</h3>
+<h3>Gigs as sideperson</h3>
     <% if @user.gigs.empty? %>
-      <p> You as a sideman/woman/all genders do not have any gigs!</p>
+      <p> You do not have any gigs as a sideperson!</p>
     <% else %>
       <% @user.gigs.each do |gig|%>
       <%= gig.name %>

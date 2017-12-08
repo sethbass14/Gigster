@@ -10,7 +10,7 @@
       <li><%= instrument_name %></li>
     </ul>
   <% end %>
-  <h2>Search For Musicians By Instrument</h2>
+  <h2>Search For Musicians By Instrument Above</h2>
 
   <%= form_tag(city_path(@city), :method => 'get', id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>

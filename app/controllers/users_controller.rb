@@ -8,7 +8,7 @@ skip_before_action :authorized, only: [:new, :create]
 
   def create
     instrument_ids = params[:user][:instrument_ids]
-    @user = User.new(user_params(:first_name, :last_name, :age, :bio, :city_id, :username, :password, :password_confirmation))
+    @user = User.new(user_params(:first_name, :last_name, :age, :bio, :city_id, :email, :password, :password_confirmation))
 
     if @user.valid?
       @user.save

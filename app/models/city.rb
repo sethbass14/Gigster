@@ -7,7 +7,7 @@ class City < ApplicationRecord
   end
 
   def city_instrument_names
-    city_musicians_instrument.collect {|instrument| instrument.name}.uniq!
+    city_musicians_instrument.collect {|instrument| instrument.name}.uniq
   end
 
   def search_city_by_instrument(instrument)

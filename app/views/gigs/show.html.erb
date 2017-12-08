@@ -13,6 +13,7 @@
   <br></br>
   <h2><label>Gig Leader:</label></h2>
   <li><%= link_to @gig.leader.to_s, user_path(@gig.leader)%></li>
+  <li><%= mail_to @gig.leader.email %></li>
   <% if @gig.leader_id == session[:user_id] %>
     <li><%= link_to "Edit this gig", edit_gig_path(@gig)%></li>
   <% end %>
