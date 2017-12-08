@@ -23,7 +23,7 @@ class GigsController < ApplicationController
       @gig.save
       redirect_to gig_path(@gig)
     else
-      flash[:message] = "You are already booked on this date!"
+      flash[:message] = "You are already booked on that date!"
       redirect_to new_gig_path
     end
   end
@@ -39,7 +39,7 @@ class GigsController < ApplicationController
         render :edit
       end
     else
-      flash[:message] = "You are not authorized to view this page!"
+      flash[:message] = "You were not authorized to view that page! Here is your profile page instead!"
       redirect_to user_path(session[:user_id])
     end
   end

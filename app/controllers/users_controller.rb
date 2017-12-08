@@ -39,7 +39,7 @@ skip_before_action :authorized, only: [:new, :create]
       @instruments = Instrument.all
       @cities = City.all
     else
-      flash[:message] = "You are not authorized to view this page!"
+      flash[:message] = "You were not authorized to view that page! Here is your profile page instead!"
       redirect_to user_path(session[:user_id])
     end
   end
