@@ -1,24 +1,28 @@
 <h1><%= @city.name %></h1>
 
-<h2>Instruments</h2>
+<h2>Instruments In This City</h2>
+<% if %>
+  <% @city.musicians.empty? %>
+  <p> No Instruments Have Been Added To This City!</p>
+<% else %>
+  <% @city.city_instrument_names.each do |instrument_name| %>
+    <ul>
+      <li><%= instrument_name %></li>
+    </ul>
+  <% end %>
+  <h2>Search For Musicians By Instrument</h2>
 
-<% @city.city_instrument_names.each do |instrument_name| %>
-  <ul>
-    <li><%= instrument_name %></li>
-  </ul>
-<% end %>
-<h2>Search For Musicians By Instrument</h2>
-
-<%= form_tag(city_path(@city), :method => 'get', id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>
-    <%= submit_tag "Search" %>
-<% end %>
+  <%= form_tag(city_path(@city), :method => 'get', id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Instruments" %>
+      <%= submit_tag "Search" %>
+  <% end %>
 
 
-<% if @musicians%>
-  <% @musicians.each do |musician|%>
-  <ul>
-    <li><%= link_to musician.to_s, user_path(musician) %></li>
-  </ul>
+  <% if @musicians%>
+    <% @musicians.each do |musician|%>
+    <ul>
+      <li><%= link_to musician.to_s, user_path(musician) %></li>
+    </ul>
+    <% end %>
   <% end %>
 <% end %>

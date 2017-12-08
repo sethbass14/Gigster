@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :authorized, only: [:new, :create]
   def new
     @user = User.new
     @instruments = Instrument.all
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if @user.id == current_user
+    if @user == current_user
       @instruments = Instrument.all
       @cities = City.all
     else

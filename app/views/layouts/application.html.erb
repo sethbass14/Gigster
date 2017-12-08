@@ -10,8 +10,8 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "Sign Out", signout_path, method: :delete %>
-      <%= link_to "Gigs", gigs_path %> <%= link_to "Cities", cities_path%> <%= link_to "Profile", user_path(session[:user_id])%>
+  <p>Gigster</p> <%= link_to "Sign Out", signout_path, method: :delete %>
+      <%= link_to "Gigs", gigs_path %> <%= link_to "Cities", cities_path%> <%= link_to "Profile", user_path(session[:user_id])%> <%= link_to "Create Gig", new_gig_path%>
     <% end %>
     <br></br>
     <% flash.each do |key, value| %>

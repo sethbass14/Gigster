@@ -16,10 +16,16 @@ class GigsController < ApplicationController
 
   def create
     gig_date = Date.parse(params[:gig][:date])
-    @gig = Gig.create(gig_params(:name, :location, :city_id, :leader_id, :start_time))
-    @gig.date = gig_date
-    @gig.save
-    redirect_to gig_path(@gig)
+    if current_user.available(gig_date)
+      @gig = Gig.new(gig_params(:name, :location, :city_id, :start_time))
+      @gig.leader_id = current_user.id
+      @gig.date = gig_date
+      @gig.save
+      redirect_to gig_path(@gig)
+    else
+      flash[:message] = "You are already booked on this date!"
+      redirect_to new_gig_path
+    end
   end
 
   def edit

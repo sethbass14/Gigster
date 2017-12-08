@@ -14,9 +14,6 @@
   <label>Time(HH:MM) Military Time</label>
   <%= f.text_field :start_time %>
   <br></br>
-  <label>Select Leader who booked this gig!</label>
-  <%= f.collection_select :leader_id, @users, :id, :to_s %>
-  <br></br>
   <label>Select a city</label>
   <%= f.collection_select :city_id, @cities, :id, :name%>
   <br></br>
