@@ -30,11 +30,12 @@ class User < ApplicationRecord
     !booked_dates.include?(date)
   end
 
-  # def other_instrument
-  #     self.instruments
-  # end
-  #
-  # def other_instrument=(name)
-  #   Instrument.find_or_create_by(name: name)
-  # end
+  def ordered_bookings
+    self.bookings.sort_by { | booking| booking.date }
+  end
+
+  def ordered_gigs
+    self.gigs.sort_by { | gig | gig.date }
+  end
+
 end

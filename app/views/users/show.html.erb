@@ -22,7 +22,7 @@
     <p>You don't have any gigs as a leader!</p>
   <% else %>
       <h3>Gigs as Leader</h3>
-        <% @user.bookings.each do |gig|%>
+        <% @user.ordered_bookings.each do |gig|%>
         <%= link_to gig.name, gig_path(gig) %>
     <ul>
       <li>Venue:</li>
@@ -41,7 +41,7 @@
     <% if @user.gigs.empty? %>
       <p> You do not have any gigs as a sideperson!</p>
     <% else %>
-      <% @user.gigs.each do |gig|%>
+      <% @user.ordered_gigs.each do |gig|%>
       <%= gig.name %>
       <ul>
         <li>Venue:</li>

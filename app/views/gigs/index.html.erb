@@ -1,6 +1,6 @@
 <h1>Gigs</h1>
 
-<% @gigs.all.each do |gig| %>
+<% @gigs.order_by_date.each do |gig| %>
   <label>Name:</label>
   <%= link_to gig.name, gig_path(gig) %>
   <ul>

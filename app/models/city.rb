@@ -13,5 +13,4 @@ class City < ApplicationRecord
   def search_city_by_instrument(instrument)
     self.musicians.includes(:instruments).where("instruments.name" => instrument)
   end
-
 end

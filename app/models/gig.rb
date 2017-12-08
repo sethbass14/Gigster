@@ -6,5 +6,8 @@ class Gig < ApplicationRecord
 
   # validates :musician_ids, uniqueness: true
 
+  def self.order_by_date
+      self.all.sort_by { |gig| gig.date }
+  end
 
 end
