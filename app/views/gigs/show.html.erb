@@ -3,6 +3,7 @@
 <ul>
   <h2><label>Venue:</label></h2>
   <li><%= @gig.location %></li>
+  <li><%= @gig.city.name %></li>
   <br></br>
   <li>Date:</li>
   <li><%= @gig.date.strftime("%A %B %d, %Y")%></li>

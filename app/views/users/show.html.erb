@@ -27,6 +27,7 @@
     <ul>
       <li>Venue:</li>
       <li><%= gig.location %></li>
+      <li><%= gig.city.name%></li>
       <br></br>
       <li>Date:</li>
       <li><%= gig.date.strftime("%A %B %d, %Y")%></li>
@@ -42,10 +43,11 @@
       <p> You do not have any gigs as a sideperson!</p>
     <% else %>
       <% @user.ordered_gigs.each do |gig|%>
-      <%= gig.name %>
+      <%= link_to gig.name, gig_path(gig) %>
       <ul>
         <li>Venue:</li>
         <li><%= gig.location %></li>
+        <li><%= gig.city.name%></li>
         <br></br>
         <li>Date:</li>
         <li><%= gig.date.strftime("%A %B %d, %Y")%></li>
